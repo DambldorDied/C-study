@@ -6,6 +6,7 @@ git remote add nazvanie ссылка
 git commit -m ""
 git push nazvanie master
 вставить - ctrl+insert
+git pull nazvanie master
 ____________________________________________________
 
 Последовательность действий при изменениях
