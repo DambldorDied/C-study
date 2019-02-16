@@ -1,0 +1,50 @@
+Информация о температуре воздуха и о количестве осадков в течение месяца задана в виде двух одномерных массивов.
+ Определить, сколько выпало осадков в виде снега и сколько - в виде дождя. 
+(Для определенности предполагается, что при 0 градусов идет дождь). 
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "Rus");
+	const int n = 5;
+	int d = 0;
+	int s = 0;
+	int Osadki[n], Tem[n];
+	cout << "Дни:" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		Osadki[i] = rand() % 30;
+		Tem[i] = rand() % 60 - 30;
+		cout << "День" << i + 1 << endl;
+		cout << "Температура\n" << Tem[i] << "\nОсадки\n" << Osadki[i] << endl;
+		if (Tem[i] < 0)
+		{
+			s = s + Osadki[i];
+		}
+		else
+		{
+			d = d + Osadki[i];
+		}
+	}
+	cout << "_____________\n\n\nСнег\n" << s << "\nДождь\n" << d << endl;
+
+
+
+
+	system("pause");
+}

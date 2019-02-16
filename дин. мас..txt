@@ -1,0 +1,37 @@
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int n;
+	char sr2;
+	bool sr;
+	int max2;
+	cout << "Сколько чисел: ";
+	cin >> n;
+	int* mas = new int[n];
+	in(mas, n);
+	print(mas, n);
+	cout << endl;
+	cout << endl;
+	cout << "Будем сортировать по возрастанию или по убыванию?\nP.S.: S(по убыванию)/B(по возрастанию)\n";
+	cin >> sr2;
+	if (sr2 == 'S')
+	{
+		sr = false;
+	}
+	else
+	{
+		sr = true;
+	}
+	sort(mas, n, sr);
+	print(mas, n);
+	cout << endl;
+	cout << endl;
+	max2 = max(mas, n);
+	cout << max2 << endl;
+	delete[] mas;
+
+
+
+	system("pause");
+}

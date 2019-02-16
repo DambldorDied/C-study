@@ -1,0 +1,129 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void in(int* m, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		m[i] = rand() % 100 - 50;
+	}
+}
+
+int max(int* m, int size)
+{
+	int max = m[0];
+	for (int j = 0; j < size; j++)
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			if (m[i] < m[i + 1])
+			{
+				max = i + 2;
+			}
+		}
+	}
+	return max;
+}
+
+void print(int* m, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << m[i] << " ";
+	}
+	cout << endl;
+}
+
+void end()
+{
+	cout << "\ERROR/" << endl;
+	exit(0);
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int n;
+	int vib;
+	cout << "Длина: ";
+	cin >> n;
+	system("cls");
+	int* mas = new int[n];
+	in(mas, n);
+	while (true)
+	{
+		cout << "Что можно сделать\n-----------------\n\n1-->Добавить элемент\n2-->Вывести весь массив\n3-->Заполнить массив случайными числами\n4-->Выйти" << endl;
+		cout << "Введите номер действия: ";
+		cin >> vib;
+		switch (vib)
+		{
+			case 1:
+			{
+				int* mas1 = new int[n + 1];
+				for (int i = 0; i < n; i++)
+				{
+					mas1[i] = mas[i];
+				}
+				cout << "Введите новый элемент: ";
+				cin >> mas1[n];
+				delete[] mas;
+				mas = mas1;
+				n++;
+
+				break;
+			}
+			case 2:
+			{
+				print(mas, n);
+				break;
+			}
+			case 3:
+			{
+				in(mas, n);
+				break;
+			}
+			case 4:
+			{
+				exit(0);
+				break;
+			}
+			case 5:
+			{
+				int* mas1 = new int[n - 1];
+				for (int i = 0; i < n - 1; i++)
+				{
+					mas1[i] = mas[i];
+				}
+				delete[] mas;
+				mas = mas1;
+				n--;
+				break;
+			}
+			case 6:
+			{
+				system("cls");
+				break;
+			}
+			default:
+			{
+				end();
+				break;
+			}
+		}
+	}
+	
+
+
+
+
+
+
+
+
+
+	delete[] mas;
+	system("pause");
+}

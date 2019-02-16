@@ -1,0 +1,68 @@
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int n;
+	int var;
+	char sr2 = 'S';
+	bool sr = true;
+	int max2;
+	cout << "Сколько чисел: ";
+	cin >> n;
+	int* mas = new int[n];
+	int* sohra = new int[n];
+	in(mas, n);
+	while (1)
+	{
+		cout << "Что сделать с массивом?\n1 - вывести\n2 - отсортировать\n3 - найти максимальный элемент\n4 - вывести квадраты элементов массива\n5 - выйти\n >> ";
+		cin >> var;
+		switch (var)
+		{
+			case 1:
+			{
+				print(mas, n);
+				break;
+			}
+			case 2:
+			{
+				que(sr2, sr);
+				sort(mas, n, sr);
+				break;
+			}
+			case 3:
+			{
+				max2 = max(mas, n);
+				cout << max2 << endl;
+				break;
+			}
+			case 4:
+			{
+				for (int i = 0; i < n; i++)
+				{
+					cout << sqr(mas[i]) << " ";
+				}
+				cout << endl;
+				break;
+			}
+			case 5:
+			{
+				exit(0);
+				break;
+			}
+			default:
+			{
+				end();
+				break;
+			}
+
+		}
+
+
+
+
+
+		
+	}
+	delete[] mas;
+	system("pause");
+}

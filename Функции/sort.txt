@@ -1,0 +1,29 @@
+void sort(int* m, int size, bool f)
+{
+	if (f == false)
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			for (int j = 0; j < size - 1; j++)
+			{
+				if (m[j] > m[j + 1])
+				{
+					swap(m[j], m[j + 1]);
+				}
+			}
+		}
+	}
+	if (f == true)
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			for (int j = 0; j < size - 1; j++)
+			{
+				if (m[j] < m[j + 1])
+				{
+					swap(m[j], m[j + 1]);
+				}
+			}
+		}
+	}
+}

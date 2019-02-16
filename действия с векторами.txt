@@ -1,0 +1,167 @@
+#include <iostream>
+#include <vector>
+#include <ctime>
+using namespace std;
+
+void print(vector<int> m)
+{
+	for (int i = 0; i < m.size(); i++)
+	{
+		cout << m[i] << " ";
+	}
+	cout << endl;
+}
+
+void in(int* m, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		m[i] = rand() % 100 - 50;
+	}
+}
+
+int* delete_exe(int* m, int n, int index)
+{
+	index--;
+	int* mas1 = new int[n - 1];
+	for (int i = 0; i < index; i++)
+	{
+		mas1[i] = m[i];
+	}
+	for (int i = index + 1; i < n; i++)
+	{
+		mas1[i - 1] = m[i];
+	}
+	delete[] m;
+
+	return mas1;
+}
+
+void sort(vector<int> m)
+{
+		for (int i = 0; i < m.size() - 1; i++)
+		{
+			for (int j = 0; j < m.size() - 1; j++)
+			{
+				if (m[j] > m[j + 1])
+				{
+					swap(m[j], m[j + 1]);
+				}
+			}
+		}
+	
+}
+
+int max(vector<int> m)
+{
+	int max = m[0];
+	for (int j = 0; j < m.size(); j++)
+	{
+		for (int i = 0; i < m.size() - 1; i++)
+		{
+			if (m[i] < m[i + 1])
+			{
+				max = m[i + 1];
+			}
+		}
+	}
+	return max;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	vector<int> v;
+	int k;
+	while (true)
+	{
+		cout << "1 --> Добавление в конец\n 2 --> Добавление по номеру\n 3 --> Удалить все элементы \n 4 --> Удалить элемент по номеру" << endl;
+		cout << "5 --> Удалить последний элемент\n 6 --> Отсортировать \n 7 --> Найти максимальный элемент\n 8 --> Вывести все элементы\n 9 --> Добавить 10 случайных чисел" << endl;
+		cout << "0 --> Выход\nНомер действия: ";
+		cin >> k;
+		switch (k)
+		{
+			case 1:
+			{
+				int num;
+				cout << "Число: ";
+				cin >> num;
+				v.push_back(num);
+				break;
+			}
+			case 2:
+			{
+				int num;
+				int num_index;
+				cout << "Число: ";
+				cin >> num;
+				cout << "Позиция: ";
+				cin >> num_index;
+				v.insert(v.begin() + num_index, num);
+				break;
+			}
+			case 3:
+			{
+				v.clear();
+				break;
+			}
+			case 4:
+			{
+				int num_index;
+				cout << "Позиция: ";
+				cin >> num_index;
+				v.erase(v.begin() + num_index);
+				break;
+			}
+			case 5:
+			{
+				v.pop_back();
+				break;
+			}
+			case 6:
+			{
+				sort(v);
+				break;
+			}
+			case 7:
+			{
+				int macs = max(v);
+				cout << "Максимальный элемент: " << max << endl;
+				break;
+			}
+			case 8:
+			{
+				print(v);
+				break;
+			}
+			case 9:
+			{
+				for (int i = 0; i < 10; i++)
+				{
+					v.push_back(rand() % 100);
+					
+				}
+				break;
+			}
+			case 0:
+			{
+				exit(0);
+				break;
+			}
+			default:
+			{
+				cout << "КРАШ";
+				exit(0);
+				break;
+			}
+		}
+		system("pause");
+		system("cls");
+	}
+
+
+
+
+	system("pause");
+}

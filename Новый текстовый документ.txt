@@ -1,0 +1,97 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	const int n = 15;
+	float chis[n];
+	float null[1];
+	float sum = 0;
+	float bol;
+	float otr;
+	int it;
+	cout << "          |Массив|" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		chis[i] = rand() % 20 - 10;
+		cout << "--> " << chis[i] << endl;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if (mas[i] < 0)
+		{
+			otr = mas[i];
+			mas[i] = mas[i] * (-1);
+		}
+		else
+		{
+			otr = 0;
+		}
+		if (mas[i] > mas[i + 1] && i != n - 1)
+		{
+			bol = mas[i];
+		}
+		else
+		{
+			if (i != n - 1)
+			{
+				bol = mas[i + 1];
+			}
+		}
+		if (otr < 0)
+		{
+			mas[i] = mas[i] * (-1);
+			bol = bol * (-1);
+		}
+	}
+	for (int i = 0; i < n; i++)
+	{
+		it = i;
+		if (mas[i] > 0)
+		{
+			i++;
+			while (mas[i] <= 0 && i < n)
+			{
+				sum = sum + mas[i];
+				i++;
+			}
+			break;
+		}
+	}
+	for (int i = 0; i < n; i++)
+	{
+		it = i;
+		if (mas[i] == 0)
+		{
+			while (i + 1 < n)
+			{
+				if (i + 1 != 0)
+				{
+					swap(mas[i], mas[i + 1]);
+				}
+				else
+				{
+					break;
+				}
+				i++;
+			}
+			i = it;
+		}
+	}
+	cout << "Самое большое число по модулю >> " << bol << endl;
+	cout << "Сумма от первого положительного до второго >> " << sum << endl;
+	cout << "Отсортированный по условию массив:" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << "--> " << mas[i] << endl;
+	}
+	
+
+
+
+
+	system("pause");
+}

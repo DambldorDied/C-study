@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <Windows.h>
+#include <fstream>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	setlocale(LC_ALL, "Rus");
+	ofstream fout;
+	ifstream fin;
+	fin.open("C:\\Users\\pupil\\Desktop\\files\\input.txt");
+	vector<int> age;
+	vector<string> name;
+	vector<string> surname;
+	while (fin)
+	{
+		string a;
+		fin >> a;
+		name.push_back(a);
+		fin >> a;
+		surname.push_back(a);
+		int ch;
+		fin >> ch;
+		age.push_back(ch);
+	}
+	name.pop_back();
+	age.pop_back();
+	surname.pop_back();
+	for (int i = 0; i < name.size() - 1; i++)
+	{
+		for (int j = 0; j < name.size() - 1; j++)
+		{
+			if (name[j] > name[j + 1])
+			{
+				swap(age[j], age[j + 1]);
+				swap(name[j], name[j + 1]);
+				swap(surname[j], surname[j + 1]);
+			}
+			if (name[j] == name[j + 1])
+			{
+				for (int p = 1; p < name[j].length(); p++)
+				{
+					if (name[j][p] > name[j + 1][p])
+					{
+						swap(age[j], age[j + 1]);
+						swap(name[j], name[j + 1]);
+						swap(surname[j], surname[j + 1]);
+						break;
+					}
+				}
+			}
+		}
+	}
+	for (int i = 0; i < name.size(); i++)
+	{
+		cout << left << setw(10) << name[i] << " " << setw(10) << surname[i] << " " << setw(10) << age[i] << endl;
+	}
+	fin.close();
+	fout.open("C:\\Users\\pupil\\Desktop\\files\\input.txt");
+	for (int i = 0; i < name.size(); i++)
+	{
+		fout << left << setw(10) << name[i] << " " << setw(10) << surname[i] << " " << setw(10) << age[i] << endl;
+	}
+	fout.close();
+
+
+
+
+
+
+
+
+
+
+
+
+	system("pause");
+}

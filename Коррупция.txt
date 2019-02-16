@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	float k, p, r, year;
+	float bud = 0;
+	int count = 0;
+	bool vip;
+	cout << "Кредит --> ";
+	cin >> k;
+	cout << "Процент --> ";
+	cin >> p;
+	cout << "Заработок --> ";
+	cin >> r;
+	for (int i = 1; ;i++)
+	{
+		bud = bud + r;
+		year = p / 100 * k;
+		k = k + year;
+		if(year < r)
+		if (bud <= k)
+		{
+			count++;
+			continue;
+		}
+		else
+		{
+			break;
+		}
+	}
+
+
+
+
+
+	system("pause");
+}
+4. Коммерция. Предприниматель, начав дело, взял кредит размером k
+рублей под p процентов годовых и вложил его в свое дело. По прогнозам, его
+дело должно давать прибыль r рублей в год. Сможет ли он накопить сумму,
+достаточную для погашения кредита, и если да, то через сколько лет. Все
+параметры вводятся с клавиатуры.

@@ -1,0 +1,92 @@
+Для заданного натурального числа определить, образуют ли его цифры арифметическую прогрессию. 
+Предполагается, что в числе не менее трёх цифр. 
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "Rus");
+	int num, c;
+
+	int del = 100;
+	bool cif;
+	cout << "Введите число:";
+	cin >> num;
+	while (num <= 0)
+	{
+		cout << "Введите число:";
+		cin >> num;
+	}
+	for (int i = 3; ;i++)
+	{
+		if (num % del == 0)
+		{
+			c = i;
+			break;
+		}
+		del *= 10;
+	}
+	del = 0;
+	int* Num = new int[c];
+	for (int i = 0; i < c; i++)
+	{
+		if (i == 0)
+		{
+			continue;
+		}
+		else
+		{
+			del *= 10;
+		}
+	}
+	for (int i = 0; i < c; i++)
+	{
+		if (i == 0)
+		{
+			Num[i] = num % del;
+			del *= 10;
+		}
+		else
+		{
+			Num[i] = num % del;
+			Num[i] = num / del;
+			del *= 10;
+		}
+	}
+	for (int i = 0; i - 1 < c; i++)
+	{
+		if (Num[i + 1] - Num[i] == Num[i + 3] - Num[i + 2])
+		{
+			cif = true;
+		}
+		else
+		{
+			cif = false;
+			break;
+		}
+	}
+	if (cif == true)
+	{
+		cout << "Y" << endl;
+	}
+	else
+	{
+		cout << "N" << endl;
+	}
+
+
+
+
+
+	system("pause");
+}

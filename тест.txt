@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int score = 0;
+	cout << "Вы сейчас смотрите в экран? N(Нет)/Y(Да):";
+	char a = 'N';
+	cin >> a;
+	switch (a)
+	{
+	case 'N':
+	{
+		cout << "Правильно!!! Вы смотрите не в экран, а на экран." << endl;
+		score++;
+		break;
+	}
+	case 'Y':
+	{
+		cout << "Неправильно. Мне очень жаль, но вы смотрите на экран." << endl;
+		break;
+	}
+	default:
+	{
+		cout << "Нет такого ответа!!! Идем дальше:3" << endl;
+	}
+	}
+	cout << "Ыпмал ьтсе еклотоп ан?" << endl;
+	a = 'Y';
+	cin >> a;
+	switch (a)
+	{
+		case 'Y':
+		{
+			cout << "Цедолом, +1 балл." << endl;
+			score++;
+			break;
+		}
+		case 'N':
+		{
+			cout << "Нихт, нихт..." << endl;
+			break;
+		}
+		default:
+		{
+			cout << "Нет такого ответа!!! Идем дальше:3" << endl;
+		}
+	}
+	cout << "Ты говоришь на ...(N(Англ)/Y(Рус)):";
+	a = 'Y';
+	cin >> a;
+	switch (a)
+	{
+		case 'Y':
+		{
+			cout << "Дааа!!! Ты говоришь на русском." << endl;
+			score++;
+			break;
+		}
+		case 'N':
+		{
+			cout << "Значит ты тут ничего не понимаешь)))))))" << endl;
+			break;
+		}
+		default:
+		{
+			cout << "Нет такого ответа!!! Идем дальше:3" << endl;
+		}
+	}
+	cout << "Тест кончился:)))))))))))" << endl;
+	cout << "Ваши победные очки 0_0 --->" << score << endl;
+	
+
+
+
+
+	system("pause");
+}

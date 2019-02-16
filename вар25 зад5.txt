@@ -1,0 +1,108 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void in(int* m, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		m[i] = rand() % 100 - 50;
+	}
+}
+
+int max(int* m, int size)
+{
+	int max = m[0];
+	for (int j = 0; j < size; j++)
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			if (m[i] < m[i + 1])
+			{
+				max = i + 2;
+			}
+		}
+	}
+	return max;
+}
+
+void print(int* m, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << m[i] << " ";
+	}
+	cout << endl;
+}
+
+void sort2(int* m, int size)
+{
+	int count = 0;
+	int n = size / 2;
+	int* mas3 = new int[n];
+	int v = n;
+	if (size % 2 == 1)
+	{
+		v++;
+	}
+	int kolvo = 0;
+	int* mas2 = new int[n];
+	for (int i = 0; i < size; i++)
+	{
+		if (i % 2 == 0)
+		{
+			mas3[kolvo] = m[i];
+			count++;
+		}
+		else
+		{
+			mas2[kolvo] = m[i];
+			count++;
+		}
+		if (count == 2)
+		{
+				count = 0;
+				kolvo++;
+		}
+	}
+	for (int i = 0; i < v; i++)
+	{
+		m[i] = mas2[i];
+	}
+	for (int i = v; i < size; i++)
+	{
+		m[i] = mas3[i];
+	}
+
+	delete[] mas2;
+	delete[] mas3;
+}
+//1 2 3 4 5 6 7 8 9
+//2 4 6 8 1 3 5 7 9
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int n;
+	int max2;
+	cout << "Длина: ";
+	cin >> n;
+	system("cls");
+	int* mas = new int[n];
+	in(mas, n);
+	print(mas, n);
+	max2 = max(mas, n);
+	cout << "Номер максимального элемента: " << max2 << endl;
+	cout << endl;
+	sort2(mas, n);
+	print(mas, n);
+
+
+
+
+
+
+	delete[] mas;
+	system("pause");
+}
