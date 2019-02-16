@@ -1,3 +1,14 @@
 git config --global user.email "Кирилл Прокапович"
 git init
+git status
+git add .
+git remote add nazvanie ссылка
+git commit -m ""
+git push nazvanie master
+вставить - ctrl+insert
+____________________________________________________
+
+Последовательность действий при изменениях
+
+git add .
 git commit -m ""
