@@ -1,0 +1,39 @@
+#include <iostream>
+#include <Windows.h>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	ofstream fout;
+	ifstream fin;
+	fout.open("output.txt");
+	int n;
+	int save;
+	int fib = 0;
+	cout << "Кол-во Фиббоначи: ";
+	cin >> n;
+	if (n = 0)
+	{
+		fout.close();
+		system("pause");
+		exit(0);
+	}
+	fout << n << " ";
+	save = n;
+	n++;
+	for (int i = 1; i < n; i++)
+	{
+		n = save + n;
+		save = n;
+		fout << n << " ";
+	}
+	fout.close();
+
+
+
+	system("pause");
+}
