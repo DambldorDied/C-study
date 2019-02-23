@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Windows.h>
-#include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -8,28 +8,25 @@ int main()
 {
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
+	srand(time(NULL));
 	ofstream fout;
 	ifstream fin;
 	fout.open("output.txt");
 	int n;
-	int save;
-	int fib = 0;
-	cout << "Кол-во Фиббоначи: ";
+	int r;
+	cout << "Кол-во чисел: ";
 	cin >> n;
-	if (n = 0)
+	if (n == 0)
 	{
 		fout.close();
 		system("pause");
 		exit(0);
 	}
-	fout << n << " ";
-	save = n;
-	n++;
-	for (int i = 1; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
-		n = save + n;
-		save = n;
-		fout << n << " ";
+		r = rand() % 101;
+		fout << r << " ";
+		cout << r << " ";
 	}
 	fout.close();
 
