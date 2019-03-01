@@ -43,12 +43,14 @@ int main()
 	else
 	{
 		cout << "Не удалось загрузить базу" << endl;
+		system("pause");
+		exit(0);
 	}
 	int answer = -1;
-	
+
 	while (answer != 0)
 	{
-		cout << "1. Распечатка\n2. Добавление\n3. Удаление\n4. Распечатка по классу\n5. Сохранение в файл\n6. Сортировка\n7. Инфо по цене\n0. Выход" << endl;
+		cout << "1. Распечатка\n2. Добавление\n3. Удаление\n4. Распечатка по классу\n5. Сохранение в файл\n6. Сортировка\n7. Инфо по цене\n8.Сохранение по id\n9.Общий капитал\n0. Выход" << endl;
 		cout << "--> ";
 		cin >> answer;
 		switch (answer)
@@ -82,7 +84,7 @@ int main()
 			case 3:
 			{
 				char o;
-				cout << "Удаление по параметру(ID(I) или марка(M)): ";
+				cout << "Удаление по параметру(ID(I) или по заданному параметру(P)): ";
 				cin >> o;
 				if (o == 'I')
 				{
@@ -92,16 +94,87 @@ int main()
 					I--;
 					model.erase(model.begin() + I);
 				}
-				if (o == 'M')
+				if (o == 'P')
 				{
-					string m;
-					cout << "Введите марку: ";
+					char m;
+					cout << "Введите параметр(Класс(C), Год выпуска(Y), Цена(P), Поддерживаемость(B), Марка(M)): ";
 					cin >> m;
-					for (int i = 0; i < model.size(); i++)
+					if (m == 'M')
 					{
-						if (model[i].mark == m)
+						string mar;
+						cout << "Введите марку: ";
+						cin >> mar;
+						for (int i = 0; i < model.size(); i++)
 						{
-							model.erase(model.begin() + i);
+							if (model[i].mark == mar)
+							{
+								model.erase(model.begin() + i);
+							}
+						}
+					}
+					if (m == 'Y')
+					{
+						int y;
+						cout << "Год выпуска: ";
+						cin >> y;
+						for (int i = 0; i < model.size(); i++)
+						{
+							if (model[i].year == y)
+							{
+								model.erase(model.begin() + i);
+							}
+						}
+					}
+					if (m == 'P')
+					{
+						int c;
+						cout << "Цена: ";
+						cin >> c;
+						for (int i = 0; i < model.size(); i++)
+						{
+							if (model[i].price == c)
+							{
+								model.erase(model.begin() + i);
+							}
+						}
+					}
+					if (m == 'C')
+					{
+						string y;
+						cout << "Класс: ";
+						cin >> y;
+						for (int i = 0; i < model.size(); i++)
+						{
+							if (model[i].kat == y)
+							{
+								model.erase(model.begin() + i);
+							}
+						}
+					}
+					if (m == 'B')
+					{
+						char b;
+						cout << "Б/У(Y(да), N(нет)): ";
+						cin >> b;
+						if (b == 'Y')
+						{
+							for (int i = 0; i < model.size(); i++)
+							{
+								if (model[i].old == 0)
+								{
+									model.erase(model.begin() + i);
+								}
+							}
+						}
+						if (b == 'N')
+						{
+							for (int i = 0; i < model.size(); i++)
+							{
+								if (model[i].old == 1)
+								{
+									model.erase(model.begin() + i);
+								}
+							}
 						}
 					}
 				}
@@ -117,6 +190,7 @@ int main()
 					if (model[i].kat == cat)
 					{
 						cout << "ID: " << model[i].id << "\nМарка: " << model[i].mark << "\nКласс: " << model[i].kat << " \nЦена: " << model[i].price << " руб. \nГод выпуска: " << model[i].year << " \nПоддерживаемость:" << model[i].old << "\n____________________________" << endl;
+						cout << endl;
 					}
 				}
 				break;
@@ -155,12 +229,50 @@ int main()
 					if (model[i].price >= pr)
 					{
 						cout << "ID: " << model[i].id << "\nМарка: " << model[i].mark << "\nКласс: " << model[i].kat << " \nЦена: " << model[i].price << " руб. \nГод выпуска: " << model[i].year << " \nПоддерживаемость:" << model[i].old << "\n____________________________" << endl;
+						cout << endl;
 					}
 				}
 				break;
 			}
+			case 8:
+			{
+				int id1;
+				cout << "Введите ID: ";
+				cin >> id1;
+				fout.open(id1 + "pasport.txt");
+				for (int i = 0; i < model.size(); i++)
+				{
+					if (model[i].id == id1)
+					{
+						fout << "ID: " << model[i].id << "\nМарка: " << model[i].mark << "\nКласс: " << model[i].kat << " \nЦена: " << model[i].price << " руб. \nГод выпуска: " << model[i].year << " \nПоддерживаемость:" << model[i].old << "\n____________________________" << endl;
+						break;
+					}
+				}
+				break;
+			}
+			case 9:
+			{
+				float sum = 0;
+				for (int i = 0; i < model.size(); i++)
+				{
+					sum = sum + model[i].price;
+				}
+				cout << "Общая сумма: " << sum << endl;
+				cout << endl;
+				break;
+			}
 			case 0:
 			{
+				char v;
+				cout << "Сохранить?\n(Да(Y)или нет(N) --> ";
+				cin >> v;
+				if (v == 'Y')
+				{
+					for (int i = 0; i < model.size(); i++)
+					{
+						fout << model[i].id << " " << model[i].mark << " " << model[i].kat << " " << model[i].price << " " << model[i].year << " " << model[i].old << endl;
+					}
+				}
 				exit(0);
 				break;
 			}
@@ -168,11 +280,12 @@ int main()
 			{
 				cout << "ERROR" << endl;
 				exit(0);
+				break;
 			}
 		}
 	}
-	
-	
+
+
 
 
 
