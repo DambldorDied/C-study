@@ -1,0 +1,73 @@
+#include <iostream>
+#include <Windows.h>
+#include <string>
+#include <ctime>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+struct woman
+{
+	int age;
+	string name;
+	bool married;
+};
+
+struct child
+{
+	int age;
+	string name;
+	string sex;
+};
+
+child chil(woman a)
+{
+	child n;
+	vector<string> namef = { "Катя", "Настя", "Валентина", "Наташа", "Виктория" };
+	vector<string> namem = { "Кирилл", "Миша", "Пётр", "Женя", "Дима" };
+	if (a.age >= 18 && a.married == 1)
+	{
+		int an;
+		an = rand() & 2;
+		if (an == 1)
+		{
+			n.sex = "female";
+			int na;
+			na = rand() % 5;
+			n.name = namef[na];
+		}
+		if (an == 0)
+		{
+			n.sex = "male";
+			int na = rand() % 5;
+			n.name = namem[na];
+		}
+		n.age = 0;
+	}
+	return n;
+}
+
+void compliment(woman a)
+{
+	cout << a.name << ", вы так прекрасны в свои " << a.age << " лет!" << endl;
+}
+
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	srand(time(NULL));
+	child m;
+	woman a;
+	a.age = 18;
+	a.name = "Мария";
+	a.married = 1;
+	m = chil(a);
+	cout << m.name << "." << m.age << "." << m.sex << endl;
+	compliment(a);
+
+
+
+	system("pause");
+}
