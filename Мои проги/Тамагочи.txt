@@ -1,0 +1,174 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <Windows.h>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
+
+using namespace std;
+
+class Cat
+{
+protected:
+	int age;
+	string color;
+	string lsw;
+	int nastr;
+	int zdor;
+	string name;
+public:
+	Cat(string c, string n)
+	{
+		age = 0;
+		color = c;
+		lsw = "sit";
+		nastr = 5;
+		zdor = 10;
+		name = n;
+	}
+	Cat(int a, string c, string l, int n, int z, string na)
+	{
+		age = a;
+		color = c;
+		lsw = l;
+		nastr = n;
+		zdor = z;
+		name = na;
+	}
+	int GetAge()
+	{
+		return age;
+	}
+	string GetCol()
+	{
+		return color;
+	}
+	string GetLsw()
+	{
+		return lsw;
+	}
+	int GetN()
+	{
+		return nastr;
+	}
+	int GetZ()
+	{
+		return zdor;
+	}
+	string GetNm()
+	{
+		return name;
+	}
+	void Play()
+	{
+		if (nastr < 10)
+			nastr++;
+		else
+			cout << "Слишком счастлив!" << endl;
+	}
+	void Feed()
+	{
+		if (zdor < 10)
+			zdor++;
+		else
+			cout << "И так здоров!" << endl;
+	}
+	void Wake()
+	{
+		if (lsw == "sit")
+			cout << "Сидит." << endl;
+		else
+			lsw = "sit";
+	}
+	void Throw()
+	{
+		if (lsw == "walk")
+			cout << "Гуляет." << endl;
+		else
+			lsw = "walk";
+	}
+	void RandomEvent()
+	{
+		age++;
+		int r = rand() % 3;
+		if (r == 0)
+			lsw = "sleep";
+		if (r == 1)
+			lsw = "sit";
+		if (r == 2)
+			lsw = "walk";
+		nastr = rand() % 11;
+		zdor = rand() % 11;
+	}
+};
+
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	setlocale(LC_ALL, "Rus");
+	string nm, cl;
+	cout << "Назовите кота: ";
+	cin >> nm;
+	cout << "Цвет кота: ";
+	cin >> cl;
+	Cat cat = Cat(0, cl, "sleep", 5, 10, nm);
+	while (true)
+	{
+		cout << "_______Твой кот________\nИмя: " << cat.GetNm() << "\nВозраст: " << cat.GetAge() << "\nЦвет: " << cat.GetCol() << "\nНастроение: " << cat.GetN() << "\nЗдоровье: " << cat.GetZ() << "\nСостояние: " << cat.GetLsw() << endl;
+		cout << "1.Играть\n2.Лечение\n3.Сесть\n4.Гулять\n>>>";
+		int v;
+		cin >> v;
+		switch (v)
+		{
+			case 1:
+			{
+				cat.Play();
+				break;
+			}
+			case 2:
+			{
+				cat.Feed();
+				break;
+			}
+			case 3:
+			{
+				cat.Wake();
+				break;
+			}
+			case 4:
+			{
+				cat.Throw();
+				break;
+			}
+			default:
+			{
+				cout << "Ошибка!" << endl;
+				break;
+			}
+		}
+		int r = rand() % 5;
+		if (r == 1)
+		{
+			cout << "Русская Рулетка!!!!\nПосмотрите, что будет дальше)" << endl;
+			cat.RandomEvent();
+			system("pause");
+		}
+		system("cls");
+		if (cat.GetAge() == 100 || cat.GetN() == 0 || cat.GetZ() == 0)
+		{
+			cout << "Вы умерли:)" << endl;
+			break;
+		}
+	}
+
+
+
+
+
+
+
+
+	system("pause");
+}

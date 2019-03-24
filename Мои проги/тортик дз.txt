@@ -1,0 +1,73 @@
+#include <iostream>
+#include <Windows.h>
+#include <string>
+
+using namespace std;
+
+class Cake
+{
+private:
+	int mas;
+	string nach;
+	bool ccking;
+public:
+	Cake()
+	{
+		mas = 0;
+		nach = "";
+		ccking = false;
+	}
+	Cake(int m, bool c, string n)
+	{
+		mas = m;
+		nach = n;
+		ccking = c;
+	}
+	int SetMas()
+	{
+		return mas;
+	}
+	bool SetC()
+	{
+		return ccking;
+	}
+	string SetN()
+	{
+		return nach;
+	}
+	void Cook()
+	{
+		if (ccking == false)
+		{
+			ccking = true;
+			cout << "Приготовлено!" << endl;
+		}
+		else
+		{
+			cout << "Пережарите." << endl;
+		}
+	}
+	void Eat()
+	{
+		mas = 0;
+		nach = "";
+		ccking = 0;
+		cout << "Съедено!" << endl;
+	}
+};
+
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	Cake beze = Cake(300, false, "Cake");
+	cout << beze.SetMas << "гр. " << beze.SetC << " " << beze.SetN << endl;
+	beze.Cook();
+	cout << beze.SetMas << "гр. " << beze.SetC << " " << beze.SetN << endl;
+	beze.Eat();
+	cout << beze.SetMas << "гр. " << beze.SetC << " " << beze.SetN << endl;
+
+
+
+	system("pause");
+}
